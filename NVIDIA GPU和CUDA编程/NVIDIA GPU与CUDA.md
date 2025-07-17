@@ -1,5 +1,9 @@
 ## 1. NVIDIA GPU架构
 
+[NVIDIA GPU 架构详解：Pascal、Volta、Turing、Ampere、Ada、Hopper、Blackwell](https://blog.csdn.net/asialee_bird/article/details/145998718)
+
+[NVIDIA GPU 架构梳理](https://zhuanlan.zhihu.com/p/394352476)
+
 <img src="https://raw.githubusercontent.com/wlkq151172/image_store/main/20250716204930462.png" alt="image-20250716204922136" style="zoom: 80%;" />
 
 根据您提供的英伟达GPU架构图（示意图），以下是详细的技术解析：
@@ -175,4 +179,4 @@
 
 ​		送进去的QKV的块，V2在实际的GPU计算单元里面还会切分到不同的warp，只不过V2划分二点是Q而不是KV，一个warp里面保留了完整的KV
 
-“首先看fwd，相比V1，V2改进了Warp Partition：4个warp会从smem的K/V tile load同样的数据做mma计算，但是load 不同Q，把V1 sliced-K sliced-V 改成了v2 sliced-Q，V1的做法是需要warp之间产生同步通信的，因为在计算QK结果乘V的时候，如图所示需要跨warp reduction得到O的结果，而且fwd的目的是沿着行方向计算softmax，行方向信息最后要汇总的，这也需要跨warp不同。V2就不需要了，这样可以减少同步开销。”
+“首先看fwd，相比V1，V2改进了Warp Partition：4个warp会从smem的K/V tile load同样的数据做mma计算，但是load 不同Q，把V1 sliced-K sliced-V 改成了v2 sliced-Q，V1的做法是需要warp之间产生同步通信的，因为在计算QK结果乘V的时候，如图所示需要跨warp reduction得到O的结果，而且fwd的目的是沿着行方向计算softmax，行方向信息最后要汇总的，这也需要跨warp不同。V2就不需要了，这样可以减少同步开销。”  
