@@ -1,6 +1,6 @@
 # AI-Infra--Notes
 
-> AI Infra学习路线规划
+> AI Infra学习路线规划-12.16
 
 ## Github 仓库
 
